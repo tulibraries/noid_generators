@@ -1,0 +1,51 @@
+
+<div class="row">
+  <div class="col">
+    <h2><%= @generator.name %> NOID Generator</h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <%= simple_form_for @generator do |f| %>
+
+    <% if @generator.last_date == Time.now.strftime("%m") %>
+      <% new_noid = @generator.noid.to_i + 1 %>
+    <% else %>
+      <% new_noid = 1 %>
+    <% end %>
+
+    <% last_date = Time.now.strftime("%m") %>
+
+    <%= f.input :last_date, as: :hidden, input_html: { value: last_date } %>
+    <%= f.input :noid, as: :hidden, input_html: { value: new_noid } %>
+
+    <% unless @generator.name == "Bulletin" %>
+      <% project_set = @generator.projects.map { |p| [p.name, p.label] }.to_a %>
+      <%= f.input :projects, as: :select, collection: project_set, selected: project_set.detect{ |p| p[1] == params[:project] }, required: true %>
+    <% end %>
+
+    <% if @generator.name == "Templana (Complex)" %>
+      <%= f.input :class_code, label: "Classification Code", required: true %>
+    <% end %>
+    
+    <% if @generator.name == "Bulletin" %>
+      <%= f.input :prefix, as: :select, collection: ["B","P","S","V"], required: true %>
+      <%= f.input :suffix, as: :select, collection: ["A","B","D","I","M","R"], required: true %>
+    <% end %>
+
+    <p style="margin-top: 35px">
+      <%= f.button :submit, "Generate NOID", class: "btn btn-primary" %>
+    </p>
+
+    <% end %>
+  </div>
+</div>
+
+<% unless @generator.name == "Bulletin" %>
+  <div class="row">
+    <div class="col">
+      <%= link_to 'Back', generators_path %>
+    </div>
+  </div>
+<% end %>

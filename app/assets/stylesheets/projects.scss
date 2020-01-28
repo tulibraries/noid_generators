@@ -1,0 +1,23 @@
+// Place all the styles related to the Projects controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.form-control {
+	border-color: #ccc!important;
+	background-image: none!important;
+}
+#notice {
+	color: green;
+	margin-top: 21px;
+}
+
+th {
+	text-align: left;
+	border: 0;
+	padding-bottom: 7px;
+}
+
+.new-project {
+	font-size: 145%;
+	text-decoration: underline;
+}

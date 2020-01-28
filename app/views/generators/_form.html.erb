@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col">
+    <%= form_with(model: generator, local: true) do |form| %>
+      <% if generator.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(generator.errors.count, "error") %> prohibited this generator from being saved:</h2>
+
+          <ul>
+          <% generator.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col actions">
+    <%= simple_form_for @generator do |f| %>
+      <%= f.input :name %>
+      <p>Projects: 
+        <ul>
+        <% @generator.projects.each do |project| %>
+          <li><%= link_to project.name.to_s, project %></li>
+        <% end %>
+        </ul>
+      </p>
+      <p style="margin-top: 35px;">
+        <%= f.button :submit, class: "btn btn-primary" %>
+      </p>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col">
+    <h1>Projects</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col mt2">
+    <p><%= link_to 'Create New Project', new_project_path, class: "new-project" %></p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <table border="0" width="100%" style="border-top: 0">
+      <thead>
+        <tr>
+          <th width="35%">Project Name</th>
+          <th>Label</th>
+          <th>Code</th>
+          <th>Generator</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @projects.order(:name).each do |project| %>
+          <tr>
+            <td><%= project.name %></td>
+            <td><%= project.label %></td>
+            <td><%= project.code %></td>
+            <td><%= link_to project.generator.name, generator_path(project.generator) %></td>
+            <td><%= link_to 'Show', project %></td>
+            <td><%= link_to 'Edit', edit_project_path(project) %></td>
+            <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col mt-5 mb-5">
+    <%= link_to 'Create New Project', new_project_path, class: "new-project" %>
+  </div>
+</div>

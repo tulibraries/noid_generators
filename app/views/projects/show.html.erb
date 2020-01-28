@@ -1,0 +1,38 @@
+<div class="row mb-2">
+  <h1>Project</h1>
+</div>
+
+<div class="row mb-2">
+  <div class="col">
+    <strong>Name: </strong> 
+    <%= @project.name %>
+  </div>
+</div>
+
+<div class="row mb-2">
+  <div class="col">
+    <strong>label:</strong> 
+    <%= @project.label %>
+  </div>
+</div>
+
+<div class="row mb-2">
+  <div class="col">
+    <strong>code:</strong> 
+    <%= @project.code %>
+  </div>
+</div>
+
+<div class="row mb-2">
+  <div class="col">
+    <strong>generator:</strong> 
+    <%= link_to @project.generator.name, generator_path(@project.generator) %>
+  </div>
+</div>
+
+<div class="row mt-3" >
+  <div class="col">
+    <%= link_to 'Edit', edit_project_path(@project) %> |
+    <%= link_to 'Back', projects_path %>
+  </div>
+</div>
