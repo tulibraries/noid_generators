@@ -199,6 +199,7 @@ GEM
     parallel (1.19.1)
     parser (2.6.5.0)
       ast (~> 2.4.0)
+    pg (1.2.2)
     popper_js (1.16.0)
     populate (0.0.2)
       activerecord (>= 3.1.0)
@@ -319,6 +320,7 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
+    sequel (5.29.0)
     shellany (0.0.1)
     simple_auth (3.0.0)
       rails (>= 4.2.0)
@@ -398,6 +400,7 @@ DEPENDENCIES
   json-schema
   launchy
   mutant-rspec
+  pg
   populate
   pry-rails
   puma (~> 3.11)
@@ -412,6 +415,7 @@ DEPENDENCIES
   rubocop-rails
   sass-rails (~> 5.0)
   selenium-webdriver
+  sequel
   simple_auth
   simple_form
   simplecov

@@ -22,7 +22,7 @@ class GeneratorsController < ApplicationController
 
   def bulletin
     @generator = Generator.find_by(name: "Bulletin")
-    redirect_to generator_path(@generator)
+    redirect_to generator_path(@generator) unless @generator.nil?
   end
 
   def create
@@ -49,8 +49,6 @@ class GeneratorsController < ApplicationController
         year = Time.zone.now.strftime("%Y")
         month = Time.zone.now.strftime("%m")
         noid = params[:generator]["noid"].rjust(5, "0")
-
-        binding.pry
 
         case @generator.name
         when "General"

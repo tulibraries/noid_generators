@@ -10,7 +10,7 @@ gem "sqlite3"
 gem "puma", "~> 3.11"
 gem "sass-rails", "~> 5.0"
 gem "uglifier", ">= 1.3.0"
-
+gem "pg"
 gem "coffee-rails", "~> 4.2"
 gem "turbolinks", "~> 5"
 gem "jbuilder", "~> 2.5"
@@ -27,7 +27,6 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
   gem "json-schema"
-  gem "pry-rails"
   gem "rubocop", require: false
   gem "rubocop-rails", require: false
   gem 'rack_session_access'
@@ -41,6 +40,7 @@ group :development do
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
   gem "web-console", ">= 3.3.0"
+  gem "sequel"
 end
 
 group :test do
