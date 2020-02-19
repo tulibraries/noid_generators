@@ -8,9 +8,7 @@
   <div class="col">
     <ul class="list-unstyled m-3">
       <% @generators.each do |generator| %>
-        <li><h2><%= link_to generator.name, generator %> -- <%= link_to 'Destroy', generator_path(generator),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %></h2></li>
+        <li><h2><%= link_to generator.name, generator %></h2></li>
       <% end %>
     </ul>
   </div>
