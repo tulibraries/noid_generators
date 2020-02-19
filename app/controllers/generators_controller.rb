@@ -48,7 +48,7 @@ class GeneratorsController < ApplicationController
         suffix = params[:generator]["suffix"]
         year = Time.zone.now.strftime("%Y")
         month = Time.zone.now.strftime("%m")
-        noid = params[:generator]["noid"].rjust(5, "0")
+        noid = params[:generator]["noid"].rjust(5, "0") unless params[:generator]["noid"].nil?
 
         case @generator.name
         when "General"
