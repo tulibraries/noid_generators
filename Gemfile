@@ -29,7 +29,7 @@ group :development, :test do
   gem "json-schema"
   gem "rubocop", require: false
   gem "rubocop-rails", require: false
-  gem 'rack_session_access'
+  gem "rack_session_access"
 end
 
 group :development do

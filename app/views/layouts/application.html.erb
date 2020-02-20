@@ -23,9 +23,11 @@
             </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
               <% if logged_in? %>
+                <% if is_admin? %>
                 <%= link_to "Generators", generators_path, class: "dropdown-item btn btn-secondary" %>
                 <%= link_to "Projects", projects_path, class: "dropdown-item btn btn-secondary" %>
                 <div class="dropdown-divider"></div>
+                <% end %>
                 <%= link_to "Logout", '/logout', class: "dropdown-item btn btn-secondary" %>
               <% else %>
                 <%= form_tag(login_path, {class: "p-4"}) do %>   

@@ -4,7 +4,7 @@ require "rails_helper"
 include Rack::Test::Methods
 
 RSpec.describe GeneratorsController, type: :controller do
-  
+
   let(:valid_attributes) {
     skip("Add a hash of attributes valid for your model")
   }
@@ -16,7 +16,7 @@ RSpec.describe GeneratorsController, type: :controller do
   user = FactoryBot.create(:user)
 
   let(:valid_session) { {} }
-  let(:headers) { ['HTTP_AUTHORIZATION' => ActionController::HttpAuthentication::Basic.encode_credentials(user.username,user.password)] }
+  let(:headers) { ["HTTP_AUTHORIZATION" => ActionController::HttpAuthentication::Basic.encode_credentials(user.username, user.password)] }
 
 
 

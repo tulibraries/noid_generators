@@ -16,17 +16,17 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
-ENV["RAILS_ENV"] ||= 'test'
+ENV["RAILS_ENV"] ||= "test"
 require File.expand_path("../../config/environment", __FILE__)
-require 'rspec/rails'
+require "rspec/rails"
 require "rack_session_access/capybara"
 
 RSpec.configure do |config|
 
   Dir["#{::Rails.root}/spec/support/**/*.rb"].sort.each { |f| require f }
 
-  config.include AuthRequestHelper, :type => :request
-  config.include AuthHelper, :type => :controller
+  config.include AuthRequestHelper, type: :request
+  config.include AuthHelper, type: :controller
 
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
