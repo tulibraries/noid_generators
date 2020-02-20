@@ -1,12 +1,14 @@
 <div class="row">
 	<div class="col">
 		<% if logged_in? %>
-			<% unless current_user.username == "admin" %>
+			<% if current_user.username == "bulletin" %>
 				<%= link_to "Generate NOIDs for the Bulletin Clippings Collection", bulletin_path, class: "public-access-link" %>
 			<% else %>
 				<ul>
 					<li><%= link_to "Generate NOIDs", generators_path, style: "font-size: 150%;line-height: 2rem" %></li>
-					<li><%= link_to "Manage Projects", projects_path, style: "font-size: 150%;line-height: 2rem" %></li>
+					<% if is_admin? %>
+						<li><%= link_to "Manage Projects", projects_path, style: "font-size: 150%;line-height: 2rem" %></li>
+					<% end %>
 				</ul>
 			<% end %>
 		<% else %>
