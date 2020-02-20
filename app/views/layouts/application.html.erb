@@ -4,6 +4,7 @@
     <title>NoidGenerators</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -16,13 +17,27 @@
           <h1>Special Collections Research Center</h1>
         </div>
         <div class="col col-2">
-          <% if logged_in? %>
-            <%= button_to "Logout", '/logout', method: :get, class: "btn btn-primary" %>
-          <% else %>
-            <% unless request.env['PATH_INFO'] == "/login" %>
-              <%= button_to "Login", '/login', method: :get, class: "btn btn-primary" %>
-            <% end %>
-          <% end %>
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              Menu
+            </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+              <% if logged_in? %>
+                <%= link_to "Generators", generators_path, class: "dropdown-item btn btn-secondary" %>
+                <%= link_to "Projects", projects_path, class: "dropdown-item btn btn-secondary" %>
+                <div class="dropdown-divider"></div>
+                <%= link_to "Logout", '/logout', class: "dropdown-item btn btn-secondary" %>
+              <% else %>
+                <%= form_tag(login_path, {class: "p-4"}) do %>   
+                  <%= label_tag :username %>   
+                  <%= text_field_tag :username %>   
+                  <%= label_tag :password %>   
+                  <%= password_field_tag :password %>   
+                  <%= submit_tag "Login", class: "btn btn-secondary", style: "margin-top: 10px" %>
+                <%end%>
+              <% end %>
+            </div>
+          </div>
         </div>
       </div>
       <% unless notice.blank? %>

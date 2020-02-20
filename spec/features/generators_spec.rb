@@ -55,10 +55,10 @@ RSpec.feature "Generators", type: :feature do
 
     scenario "General Generator NOID matches format" do
       visit generator_path(generator.to_param)
-      select "AMANU", from: "generator_projects"
+      select "Manuscripts", from: "generator_projects"
       click_on "Generate NOID"
       expect(page.current_path).to eq(generator_path(generator.to_param))
-      expect(page).to have_content("NOID: #{project.name}#{year}#{month}")
+      expect(page.html).to have_content("NOID: #{project.label}Z#{year}#{month}")
     end
   end
 

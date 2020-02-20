@@ -44,22 +44,22 @@ RSpec.describe GeneratorsController, type: :controller do
 
     it "-- constructs valid noid for General Generator" do
       put :update, session: valid_session, params: { id: generator.id, name: "General", noid: 3, project: project.name }
-      expect(request.body.string).to eq("name=General&noid=3&project=AMANU") #{project}Z#{year}#{month}#{noid}
+      expect(request.body.string).to eq("name=General&noid=3&project=Manuscripts") #{project}Z#{year}#{month}#{noid}
     end
 
     it "-- constructs valid noid for Oral Histories Generator" do
       put :update, session: valid_session, params: { id: generator.id, name: "Oral Histories", noid: 3, project: project.name }
-      expect(request.body.string).to eq("name=Oral+Histories&noid=3&project=AMANU") #{project}JZ#{year}#{month}#{noid}
+      expect(request.body.string).to eq("name=Oral+Histories&noid=3&project=Manuscripts") #{project}JZ#{year}#{month}#{noid}
     end
 
     it "-- constructs valid noid for Templana (Complex) Generator" do
       put :update, session: valid_session, params: { id: generator.id, name: "Templana (Complex)", noid: 3, project: project.name }
-      expect(request.body.string).to eq("name=Templana+%28Complex%29&noid=3&project=AMANU") #{project}X#{class_code}Z#{year}#{month}#{noid}
+      expect(request.body.string).to eq("name=Templana+%28Complex%29&noid=3&project=Manuscripts") #{project}X#{class_code}Z#{year}#{month}#{noid}
     end
 
     it "-- constructs valid noid for Bulletin Generator" do
       put :update, session: valid_session, params: { id: generator.id, name: "Bulletin", noid: 3, project: project.name }
-      expect(request.body.string).to eq("name=Bulletin&noid=3&project=AMANU") #{prefix}Z#{year}#{month}#{noid}#{suffix}
+      expect(request.body.string).to eq("name=Bulletin&noid=3&project=Manuscripts") #{prefix}Z#{year}#{month}#{noid}#{suffix}
     end
   end
 
