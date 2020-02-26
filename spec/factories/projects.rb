@@ -2,8 +2,8 @@
 
 FactoryBot.define do
   factory :project do
-    label { "AMANU" }
-    code { "O" }
+    label { "MANU" }
+    code { "A" }
     prefix { "A" }
     suffix { "Z" }
     name { "Manuscripts" }

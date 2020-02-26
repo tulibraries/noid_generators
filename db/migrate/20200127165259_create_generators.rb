@@ -2,7 +2,7 @@
 
 class CreateGenerators < ActiveRecord::Migration[5.2]
   def change
-    create_table :generators do |t|
+    create_table :generators, id: :bigserial do |t|
       t.string :name
       t.string :last_date
       t.string :prefix
