@@ -19,8 +19,8 @@
     <div class="col">
       <%= simple_form_for(@project) do |f| %>
         <%= f.input :name, as: :string, label: "Project Name", required: true %>
+        <%= f.input :code, as: :string, label: "Repository Code" %>
         <%= f.input :label, as: :string, label: "Project Label", required: true %>
-        <%= f.input :code, as: :string %>
         <%= f.association :generator %>
 
         <%= f.button :submit, class: "btn btn-secondary" %>
