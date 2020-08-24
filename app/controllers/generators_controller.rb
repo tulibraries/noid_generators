@@ -51,9 +51,9 @@ class GeneratorsController < ApplicationController
         suffix = params[:generator]["suffix"]
         year = Time.zone.now.strftime("%Y")
         month = Time.zone.now.strftime("%m")
-        noid = params[:generator]["noid"].rjust(5, "0") unless params[:generator]["noid"].nil?
+        noid = params[:generator]["noid"].rjust(5, "0") if params[:generator]["noid"].present?
 
-        unless project.empty?
+        if project.present?
           case @generator.name
           when "General"
             message = "NOID: " + "#{project}Z#{year}#{month}#{noid}"
