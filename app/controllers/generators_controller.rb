@@ -53,7 +53,7 @@ class GeneratorsController < ApplicationController
         month = Time.zone.now.strftime("%m")
         noid = params[:generator]["noid"].rjust(5, "0") if params[:generator]["noid"].present?
 
-        if project.present?
+        if project.present? || @generator.name == "Bulletin"
           case @generator.name
           when "General"
             message = "NOID: " + "#{project}Z#{year}#{month}#{noid}"
