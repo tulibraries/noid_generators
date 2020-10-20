@@ -51,14 +51,13 @@ class GeneratorsController < ApplicationController
         suffix = params[:generator]["suffix"]
         year = Time.zone.now.strftime("%Y")
         month = Time.zone.now.strftime("%m")
-        noid = params[:generator]["noid"].rjust(5, "0") if params[:generator]["noid"].present?
+        noid = params[:generator]["noid"].rjust(6, "0") if params[:generator]["noid"].present?
 
         if project.present?
           case @generator.name
           when "General"
             message = "NOID: " + "#{project}Z#{year}#{month}#{noid}"
           when "Oral Histories"
-            noid = params[:generator]["noid"].rjust(3, "0")
             message = "NOID: " + "#{project}JZ#{year}#{month}#{noid}"
           when "Templana (Complex)"
             message = "NOID: " + "#{project}X#{class_code}Z#{year}#{month}#{noid}"
