@@ -9,12 +9,12 @@ default: &default
 
 development:
   <<: *default
-  database: noids_development
+  database: noids
 
 test:
   <<: *default
   database: noids_test
 
-# production:
-#   <<: *default
-#   database: noids
+production:
+  <<: *default
+  database: noids

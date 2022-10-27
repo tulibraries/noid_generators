@@ -1,0 +1,22 @@
+version: "3.9"
+services:
+  db:
+    image: postgres
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: password
+  web:
+    build:
+      context: .
+      dockerfile: .docker/app/Dockerfile
+      args:
+        SECRET_KEY_BASE: $SECRET_KEY_BASE
+    volumes:
+      - .:/myapp
+    ports:
+      - "3000:3000"
+    environment:
+      NOIDS_DB_HOST: db
+      NOIDS_DB_NAME: noids
+      NOIDS_DB_PASSWORD: password

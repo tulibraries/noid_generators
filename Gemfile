@@ -3,7 +3,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "2.7.2"
+ruby "2.7.6"
 
 gem "rails", "~> 5.2.4", ">= 5.2.7.1"
 # gem "sqlite3"
@@ -16,12 +16,13 @@ gem "turbolinks", "~> 5"
 gem "jbuilder", "~> 2.5"
 gem "bootsnap", ">= 1.1.0", require: false
 gem "simple_form"
-gem "bootstrap", ">= 4.0.0"
+gem "bootstrap", "~> 4.4.1"
 gem "pry-rails"
 gem "jquery-rails"
 gem "simple_auth"
 gem "bcrypt", "~> 3.1.7"
 gem "warden"
+gem "execjs"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
