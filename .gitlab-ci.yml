@@ -1,0 +1,75 @@
+include:
+  - project: "infrastructure-engineering-shared/gitlab-ci-templates"
+    file:
+      - "lint_docker.yaml"
+      - "build_docker.yaml"
+      - "security_scan.yaml"
+      - "kubectl_commands.yaml"
+
+variables:
+  IMAGE: "tulibraries/noid-generator"
+  HARBOR: "harbor.k8s.temple.edu"
+  HELM_EXPERIMENTAL_OCI: "1"
+
+.export_variables: &export_variables
+  - source .env
+  - export VERSION="${DOCKER_IMAGE_VERSION}-${CI_COMMIT_SHORT_SHA}"
+
+# Gets used in build and tag staged but overridden by deploy stage.
+before_script:
+- *export_variables
+
+stages:
+- lint
+- build
+- scan
+- tag
+- deploy
+
+lint:
+  extends: .lint_docker
+  variables:
+    DF: ".docker/app/Dockerfile"
+  except:
+    - tags
+
+build:
+  stage: build
+  extends: .build_image
+  image: $HARBOR/gitlab-ci/docker:20
+  variables:
+    DF: ".docker/app/Dockerfile --build-arg RAILS_MASTER_KEY=$MASTER_KEY --no-cache"
+  services:
+    - name: $HARBOR/gitlab-ci/docker:20-dind
+      command: ["--tls=false"]
+  except:
+    - tags
+
+scan:
+  stage: scan
+  extends: .scanimage_high
+  allow_failure: false
+  variables:
+    THRESHOLD: 10
+  except:
+    - tags
+
+tag:
+  stage: tag
+  extends: .tag_image
+  except:
+    - tags
+
+qa_deploy:
+  variables:
+  IMAGE: $HARBOR/tulibraries/noid-generator
+  RANCHER: rancher-np
+  CLUSTER: dev-library0
+stage: deploy
+extends: .helm_setup
+only:
+  - main
+script:
+  - *export_variables
+  -  helm pull oci://$HARBOR/tulibraries/noid-generator-charts/noid-generator --version "0.3.*" --untar
+  - helm upgrade noid-generator oci://$HARBOR/tulibraries/noid-generator-charts/noid-generator --version "0.3.*" --history-max=5 --namespace=noid-generator-qa --values noid-generator/values.yaml --set image.repository=$IMAGE:$VERSION
