@@ -2,7 +2,7 @@
 include .env
 export #exports the .env variables
 
-IMAGE ?= tulibraries/noid-generators 
+IMAGE ?= tulibraries/noid-generator 
 VERSION ?= $(DOCKER_IMAGE_VERSION)
 HARBOR ?= harbor.k8s.temple.edu
 CLEAR_CACHES=no
