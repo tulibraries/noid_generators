@@ -18,5 +18,5 @@ services:
       - "3000:3000"
     environment:
       NOIDS_DB_HOST: db
-      NOIDS_DB_NAME: noids
+      NOIDS_DB_NAME: noid-generators
       NOIDS_DB_PASSWORD: password

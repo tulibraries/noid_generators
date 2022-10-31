@@ -23,6 +23,7 @@ gem "simple_auth"
 gem "bcrypt", "~> 3.1.7"
 gem "warden"
 gem "execjs"
+gem "okcomputer"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

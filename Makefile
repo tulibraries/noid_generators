@@ -9,7 +9,7 @@ CLEAR_CACHES=no
 SECRET_KEY_BASE ?= $(SECRET_KEY_BASE)
 RAILS_MASTER_KEY ?= $(NOIDS_MASTER_KEY)
 NOIDS_DB_HOST ?= host.docker.internal
-NOIDS_DB_NAME ?= noid_generators
+NOIDS_DB_NAME ?= noid-generators
 NOIDS_DB_USER ?= noid
 
 DEFAULT_RUN_ARGS ?= \
