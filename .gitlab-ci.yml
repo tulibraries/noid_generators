@@ -20,11 +20,11 @@ before_script:
 - *export_variables
 
 stages:
-- lint
-- build
-- scan
-- tag
-- deploy
+  - lint
+  - build
+  - scan
+  - tag
+  - deploy
 
 lint:
   extends: .lint_docker
@@ -71,5 +71,5 @@ only:
   - main
 script:
   - *export_variables
-  -  helm pull oci://$HARBOR/tulibraries/noid-generator-charts/noid-generator --version "0.3.*" --untar
-  - helm upgrade noid-generator oci://$HARBOR/tulibraries/noid-generator-charts/noid-generator --version "0.3.*" --history-max=5 --namespace=noid-generator-qa --values noid-generator/values.yaml --set image.repository=$IMAGE:$VERSION
+  -  helm pull oci://$HARBOR/tulibraries/noid-generator-charts/noid-generator --version "0.1.*" --untar
+  - helm upgrade noid-generator oci://$HARBOR/tulibraries/noid-generator-charts/noid-generator --version "0.1.*" --history-max=5 --namespace=noid-generator-qa --values noid-generator/values.yaml --set image.repository=$IMAGE:$VERSION
