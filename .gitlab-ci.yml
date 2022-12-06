@@ -65,11 +65,11 @@ qa_deploy:
     IMAGE: $HARBOR/tulibraries/noid-generator
     RANCHER: rancher-np
     CLUSTER: dev-library0
-stage: deploy
-extends: .helm_setup
-only:
-  - main
-script:
-  - *export_variables
-  -  helm pull oci://$HARBOR/tulibraries/noid-generator-charts/noid-generator --version "0.1.*" --untar
-  - helm upgrade noid-generator oci://$HARBOR/tulibraries/noid-generator-charts/noid-generator --version "0.1.*" --history-max=5 --namespace=noid-generator-qa --values noid-generator/values.yaml --set image.repository=$IMAGE:$VERSION
+  stage: deploy
+  extends: .helm_setup
+  only:
+    - main
+  script:
+    - *export_variables
+    -  helm pull oci://$HARBOR/tulibraries/noid-generator-charts/noid-generator --version "0.1.*" --untar
+    - helm upgrade noid-generator oci://$HARBOR/tulibraries/noid-generator-charts/noid-generator --version "0.1.*" --history-max=5 --namespace=noid-generator-qa --values noid-generator/values.yaml --set image.repository=$IMAGE:$VERSION
