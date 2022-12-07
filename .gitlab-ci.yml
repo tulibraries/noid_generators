@@ -38,7 +38,7 @@ build:
   extends: .build_image
   image: $HARBOR/gitlab-ci/docker:20
   variables:
-    DF: ".docker/app/Dockerfile --build-arg RAILS_MASTER_KEY=$MASTER_KEY --no-cache"
+    DF: ".docker/app/Dockerfile --build-arg RAILS_MASTER_KEY=$MASTER_KEY --build-arg SECRET_KEY_BASE=$SECRET_KEY_BASE --no-cache"
   services:
     - name: $HARBOR/gitlab-ci/docker:20-dind
       command: ["--tls=false"]
