@@ -5,7 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "2.7.7"
 
-gem "rails", "~> 5.2.4", ">= 5.2.7.1"
+gem "rails", "~> 6.0"
 # gem "sqlite3"
 gem "puma", "~> 4.3"
 gem "sass-rails", "~> 5.0"
@@ -24,6 +24,7 @@ gem "bcrypt", "~> 3.1.7"
 gem "warden"
 gem "execjs"
 gem "okcomputer"
+gem "net-http"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -47,7 +48,7 @@ end
 
 group :test do
   gem "capybara", ">= 2.15", "< 4.0"
-  gem "chromedriver-helper"
+  gem "webdrivers"
   gem "factory_bot_rails", "~> 4.11.1"
   gem "guard-rspec", require: false
   gem "mutant-rspec"
