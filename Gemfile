@@ -7,7 +7,7 @@ ruby "2.7.7"
 
 gem "rails", "~> 6.0"
 # gem "sqlite3"
-gem "puma", "~> 4.3"
+gem "puma", "~> 5.6"
 gem "sass-rails", "~> 5.0"
 gem "uglifier", ">= 1.3.0"
 gem "pg"
@@ -25,6 +25,7 @@ gem "warden"
 gem "execjs"
 gem "okcomputer"
 gem "net-http"
+gem "net-smtp"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
