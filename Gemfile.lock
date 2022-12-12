@@ -411,6 +411,8 @@ DEPENDENCIES
   launchy
   mutant-rspec
   net-http
+  net-imap
+  net-pop
   net-smtp
   okcomputer
   pg
