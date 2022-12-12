@@ -8,15 +8,15 @@ ruby "2.7.7"
 gem "rails", "~> 6.0"
 # gem "sqlite3"
 gem "puma", "~> 5.6"
-gem "sass-rails", "~> 5.0"
+gem "sass-rails", "~> 6.0"
 gem "uglifier", ">= 1.3.0"
 gem "pg"
-gem "coffee-rails", "~> 4.2"
+gem "coffee-rails", "~> 5.0"
 gem "turbolinks", "~> 5"
-gem "jbuilder", "~> 2.5"
-gem "bootsnap", ">= 1.1.0", require: false
+gem "jbuilder", "~> 2.11"
+gem "bootsnap", ">= 1.14.0", require: false
 gem "simple_form"
-gem "bootstrap", "~> 4.4.1"
+gem "bootstrap", "~> 4.6"
 gem "pry-rails"
 gem "jquery-rails"
 gem "simple_auth"
@@ -50,14 +50,14 @@ group :development do
 end
 
 group :test do
-  gem "capybara", ">= 2.15", "< 4.0"
+  gem "capybara", "~> 3"
   gem "webdrivers"
-  gem "factory_bot_rails", "~> 4.11.1"
+  gem "factory_bot_rails"
   gem "guard-rspec", require: false
   gem "mutant-rspec"
   gem "rails-controller-testing"
   gem "rspec-activemodel-mocks"
-  gem "rspec-rails", ">=3.8.0"
+  gem "rspec-rails"
   gem "selenium-webdriver"
   gem "simplecov", require: false
   gem "webmock"
