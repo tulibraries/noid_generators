@@ -10,17 +10,17 @@ ARG SECRET_KEY_BASE
 ARG RAILS_MASTER_KEY
 
 RUN apk add -U --no-cache \
-      bash=5.1.16-r2 \
-      libc6-compat=1.2.3-r2 \
+      bash=5.2.12-r0 \
+      libc6-compat=1.2.3-r4 \
       tzdata=2022f-r1 \
-      postgresql14-client=14.5-r0 \
-      libxslt=1.1.35-r0 && \
+      postgresql14-client=14.6-r1 \
+      libxslt=1.1.37-r0 && \
     apk add -U --no-cache --virtual build-dependencies \
       build-base=0.5-r3 \
-      git=2.36.3-r0 \
-      postgresql14-dev=14.5-r0 \
-      libxslt-dev=1.1.35-r0 \
-      nodejs=16.17.1-r0 \
+      git=2.38.2-r0 \
+      postgresql14-dev=14.6-r1 \
+      libxslt-dev=1.1.37-r0 \
+      nodejs=18.12.1-r0 \
       yarn=1.22.19-r0 && \
     gem install bundler:2.3.3 && \
     bundle config build.nokogiri --use-system-libraries && \
