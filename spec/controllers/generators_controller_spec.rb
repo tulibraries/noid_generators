@@ -10,7 +10,7 @@ RSpec.describe GeneratorsController, type: :controller do
   }
 
   let(:generator) { FactoryBot.create(:generator) }
-  let(:project) { FactoryBot.create(:project, generator: generator) }
+  let(:project) { FactoryBot.create(:project, generator:) }
   year = Time.zone.now.strftime("%Y")
   month = Time.zone.now.strftime("%m")
   user = FactoryBot.create(:user)
