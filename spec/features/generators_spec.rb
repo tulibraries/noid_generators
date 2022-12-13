@@ -5,7 +5,7 @@ require "rails_helper"
 RSpec.feature "Generators", type: :feature do
 
   let!(:generator) { FactoryBot.create(:generator) }
-  let!(:project) { FactoryBot.create(:project, generator: generator) }
+  let!(:project) { FactoryBot.create(:project, generator:) }
   user = FactoryBot.create(:user)
   year = Time.zone.now.strftime("%Y")
   month = Time.zone.now.strftime("%m")
