@@ -1,4 +1,4 @@
-FROM harbor.k8s.temple.edu/library/ruby:2.7-alpine
+FROM harbor.k8s.temple.edu/library/ruby:3.1-alpine
 
 WORKDIR /app
 
