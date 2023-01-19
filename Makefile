@@ -2,7 +2,7 @@
 include .env
 export #exports the .env variables
 
-IMAGE ?= tulibraries/noid-generator 
+IMAGE ?= tulibraries/noid-generator
 VERSION ?= $(DOCKER_IMAGE_VERSION)
 HARBOR ?= harbor.k8s.temple.edu
 CLEAR_CACHES=no
@@ -31,8 +31,8 @@ run:
 build:
 	@docker build --build-arg SECRET_KEY_BASE=$(SECRET_KEY_BASE) \
 	  --build-arg RAILS_MASTER_KEY=$(RAILS_MASTER_KEY) \
-		--tag harbor.k8s.temple.edu/tulibraries/noid-generator:$(VERSION) \
-		--tag harbor.k8s.temple.edu/tulibraries/noid-generator:latest \
+		--tag $(HARBOR)/$(IMAGE):$(VERSION) \
+		--tag $(HARBOR)/$(IMAGE):latest \
 		--file .docker/app/Dockerfile \
 		--progress plain \
 		--no-cache .
