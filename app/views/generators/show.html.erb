@@ -22,16 +22,16 @@
       <% new_noid = @generator.noid.to_i + 1 %>
     <% else %>
       <% new_noid = 1 %>
-    <% end %>
+    <% end unless @generator.name == " Mosley Collection" %>
 
     <% last_date = Time.now.strftime("%m") %>
 
-    <%= f.input :last_date, as: :hidden, input_html: { value: last_date } %>
-    <%= f.input :noid, as: :hidden, input_html: { value: new_noid } %>
+    <%= f.input :last_date, as: :hidden, input_html: { value: last_date } unless @generator.name == " Mosley Collection" %>
+    <%= f.input :noid, as: :hidden, input_html: { value: new_noid } unless @generator.name == " Mosley Collection" %>
 
-    <% unless @generator.name == "Bulletin" %>
-      <% project_set = @generator.projects.map { |p| [p.name, p.code+p.label] }.to_a %>
-      <%= f.input :project, as: :select, collection: project_set, selected: project_set.detect{ |p| p[1] == @selected_project }, required: true %>
+    <% unless @generator.name == "Bulletin" || @generator.name == "Mosely Photographs" %>
+      <% project_set = @generator.projects.map { |p| [p.name, p.code+p.label] }.to_a  if @generator.name == "Bulletin" %>
+      <%= f.input :project, as: :select, collection: project_set, selected: project_set.detect{ |p| p[1] == @selected_project }, required: true, hint: "'Z', 'X', or 'JZ' delimiters will be automatically appended" %>
     <% end %>
 
     <% if @generator.name == "Templana (Complex)" %>
@@ -41,6 +41,12 @@
     <% if @generator.name == "Bulletin" %>
       <%= f.input :prefix, as: :select, label: "Collection series", collection: ["B","P","S","V"], required: true %>
       <%= f.input :suffix, as: :select, label: "Image rights holder (publisher)", collection: ["A","B","D","I","M","R"], required: true %>
+    <% end %>
+    
+    <% if @generator.name == "Mosley Photographs" %>
+      <%= f.input :picture_code, as: :string, label: "Picture Code", required: true %>
+      <%= f.input :date_taken, as: :string, label: "Date", input_html: { minlength: 8, maxlength: 8 }, required: true,
+                  hint: "numbers only, year month day: 20230131" %>
     <% end %>
 
     <p style="margin-top: 35px">
