@@ -54,7 +54,7 @@ class GeneratorsController < ApplicationController
         year = Time.zone.now.strftime("%Y")
         month = Time.zone.now.strftime("%m")
         noid = params[:generator]["noid"].rjust(6, "0") if params[:generator]["noid"].present?
-        if project.present? || @generator.name == "Bulletin"
+        if project.present? || (["Bulletin", "Mosley Photographs"].include? @generator.name)
           case @generator.name
           when "General"
             message = "NOID: " + "#{project}Z#{year}#{month}#{noid}"
@@ -70,8 +70,7 @@ class GeneratorsController < ApplicationController
             return
           end
 
-          @selected_project = params[:generator]["project"]
-
+          @selected_project = params[:generator]["project"] 
         else
           message = "Generator successfully updated."
         end
