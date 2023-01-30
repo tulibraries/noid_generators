@@ -19,7 +19,7 @@ RSpec.describe Project, type: :model do
   describe "Generator association" do
     example "Specify Generator in a project" do
       generator = FactoryBot.create(:generator)
-      project = FactoryBot.build(:project, generator: generator)
+      project = FactoryBot.build(:project, generator:)
       expect(project.generator).to be(generator)
     end
   end

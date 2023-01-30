@@ -70,7 +70,7 @@ class GeneratorsController < ApplicationController
             return
           end
 
-          @selected_project = params[:generator]["project"] 
+          @selected_project = params[:generator]["project"]
         else
           message = "Generator successfully updated."
         end
