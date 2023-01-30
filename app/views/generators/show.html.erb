@@ -30,7 +30,7 @@
     <%= f.input :noid, as: :hidden, input_html: { value: new_noid } %>
 
     <% unless @generator.name == "Bulletin" || @generator.name == "Mosley Photographs" %>
-      <% project_set = @generator.projects.map { |p| [p.name, p.code+p.label] }.to_a  if @generator.name == "Bulletin" %>
+      <% project_set = @generator.projects.map { |p| [p.name, p.code+p.label] }.to_a %>
       <%= f.input :project, as: :select, collection: project_set, selected: project_set.detect{ |p| p[1] == @selected_project }, required: true, hint: "'Z', 'X', or 'JZ' delimiters will be automatically appended" %>
     <% end %>
 
