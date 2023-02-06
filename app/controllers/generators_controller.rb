@@ -49,11 +49,12 @@ class GeneratorsController < ApplicationController
         class_code = params[:generator]["class_code"]
         prefix = params[:generator]["prefix"]
         suffix = params[:generator]["suffix"]
+        picture_code = params[:generator]["picture_code"]
+        date_taken = params[:generator]["date"]
         year = Time.zone.now.strftime("%Y")
         month = Time.zone.now.strftime("%m")
         noid = params[:generator]["noid"].rjust(6, "0") if params[:generator]["noid"].present?
-
-        if project.present? || @generator.name == "Bulletin"
+        if project.present? || (["Bulletin", "Mosley Photographs"].include? @generator.name)
           case @generator.name
           when "General"
             message = "NOID: " + "#{project}Z#{year}#{month}#{noid}"
@@ -63,12 +64,13 @@ class GeneratorsController < ApplicationController
             message = "NOID: " + "#{project}X#{class_code}Z#{year}#{month}#{noid}"
           when "Bulletin"
             message = "NOID: " + "#{prefix}Z#{year}#{month}#{noid}#{suffix}"
+          when "Mosley Photographs"
+            message = "NOID: " + "BPA001X#{picture_code.upcase}#{date_taken}#{noid}"
           else
             return
           end
 
           @selected_project = params[:generator]["project"]
-
         else
           message = "Generator successfully updated."
         end
@@ -99,6 +101,6 @@ class GeneratorsController < ApplicationController
     end
 
     def generator_params
-      params.require(:generator).permit(:name, :noid, :last_date, :project, :projects, :class_code, :prefix, :suffix)
+      params.require(:generator).permit(:name, :noid, :last_date, :project, :projects, :class_code, :prefix, :suffix, :picture_code, :date_taken)
     end
 end
