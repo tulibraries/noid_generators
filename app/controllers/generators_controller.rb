@@ -50,7 +50,7 @@ class GeneratorsController < ApplicationController
         prefix = params[:generator]["prefix"]
         suffix = params[:generator]["suffix"]
         picture_code = params[:generator]["picture_code"]
-        date_taken = params[:generator]["date"]
+        date_taken = params[:generator]["date_taken"]
         year = Time.zone.now.strftime("%Y")
         month = Time.zone.now.strftime("%m")
         noid = params[:generator]["noid"].rjust(6, "0") if params[:generator]["noid"].present?
