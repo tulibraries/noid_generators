@@ -43,6 +43,16 @@ class GeneratorsController < ApplicationController
   end
 
   def update
+    g = Generator.lock("FOR UPDATE").find(@generator.id)
+    last_date = Time.now.strftime("%m")
+    if g.last_date == last_date
+      new_noid = g.noid.to_i + 1
+    else
+      new_noid = 1
+    end
+    params[:generator]["noid"] = new_noid.to_s.rjust(6, "0")
+    params[:generator]["last_date"] = last_date
+
     respond_to do |format|
       if @generator.update(generator_params)
         project = params[:generator]["project"]
@@ -51,9 +61,9 @@ class GeneratorsController < ApplicationController
         suffix = params[:generator]["suffix"]
         picture_code = params[:generator]["picture_code"]
         date_taken = params[:generator]["date_taken"]
+        noid = params[:generator]["noid"]
         year = Time.zone.now.strftime("%Y")
         month = Time.zone.now.strftime("%m")
-        noid = params[:generator]["noid"].rjust(6, "0") if params[:generator]["noid"].present?
         if project.present? || (["Bulletin", "Mosley Photographs"].include? @generator.name)
           case @generator.name
           when "General"
