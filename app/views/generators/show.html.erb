@@ -18,17 +18,6 @@
 
     <%= simple_form_for @generator do |f| %>
 
-    <% if @generator.last_date == Time.now.strftime("%m") %>
-      <% new_noid = @generator.noid.to_i + 1 %>
-    <% else %>
-      <% new_noid = 1 %>
-    <% end unless @generator.name == " Mosley Collection" %>
-
-    <% last_date = Time.now.strftime("%m") %>
-
-    <%= f.input :last_date, as: :hidden, input_html: { value: last_date } %>
-    <%= f.input :noid, as: :hidden, input_html: { value: new_noid } %>
-
     <% unless (["Bulletin", "Mosley Photographs"].include? @generator.name) %>
       <% project_set = @generator.projects.map { |p| [p.name, p.code+p.label] }.to_a %>
       <%= f.input :project, as: :select, collection: project_set, selected: project_set.detect{ |p| p[1] == @selected_project }, required: true, hint: "'Z', 'X', or 'JZ' delimiters will be automatically appended" %>
