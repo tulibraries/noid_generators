@@ -17,6 +17,7 @@
   <div class="col">
 
     <%= simple_form_for @generator do |f| %>
+    <%= f.hidden_field :lock_version %>
 
     <% unless (["Bulletin", "Mosley Photographs"].include? @generator.name) %>
       <% project_set = @generator.projects.map { |p| [p.name, p.code+p.label] }.to_a %>
