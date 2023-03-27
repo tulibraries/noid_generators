@@ -98,9 +98,9 @@ class GeneratorsController < ApplicationController
         end
       end
       rescue ActiveRecord::StaleObjectError
-          flash[:notice] = "Noid value needs refresh. Please try again."
-          @generator.reload
-          render :show, notice: "Stale value. Pease try again."
+        flash[:notice] = "Noid value needs refresh. Please try again."
+        @generator.reload
+        render :show, notice: "Stale value. Pease try again."
     end
   end
 
