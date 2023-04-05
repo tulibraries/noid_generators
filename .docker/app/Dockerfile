@@ -12,7 +12,7 @@ ARG RAILS_MASTER_KEY
 RUN apk add -U --no-cache \
       bash=5.2.15-r0 \
       libc6-compat=1.2.3-r4 \
-      tzdata=2023b-r1 \
+      tzdata=2023c-r0 \
       postgresql14-client=14.7-r0 \
       libxslt=1.1.37-r1 && \
     apk add -U --no-cache --virtual build-dependencies \
