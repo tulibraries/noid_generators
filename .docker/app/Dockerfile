@@ -17,7 +17,7 @@ RUN apk add -U --no-cache \
       libxslt=1.1.37-r1 && \
     apk add -U --no-cache --virtual build-dependencies \
       build-base=0.5-r3 \
-      git=2.38.4-r1 \
+      git=2.38.5-r0 \
       postgresql14-dev=14.7-r0 \
       libxslt-dev=1.1.37-r1 \
       nodejs=18.14.2-r0 \
