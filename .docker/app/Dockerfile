@@ -11,7 +11,7 @@ ARG RAILS_MASTER_KEY
 
 RUN apk add -U --no-cache \
       bash=5.2.15-r5 \
-      libc6-compat=1.2.4-r0 \
+      libc6-compat=1.2.4-r1 \
       tzdata=2023c-r1 \
       postgresql14-client=14.8-r0 \
       libxslt=1.1.38-r0 && \
