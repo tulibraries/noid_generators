@@ -64,7 +64,7 @@ qa_deploy:
   variables:
     IMAGE: $HARBOR/tulibraries/noid-generator
     RANCHER: rancher-np
-    CLUSTER: dev-library1
+    CLUSTER: dev-library0
   stage: deploy
   extends: .helm_setup
   only:
