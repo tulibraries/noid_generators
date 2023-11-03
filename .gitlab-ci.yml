@@ -71,5 +71,5 @@ qa_deploy:
     - main
   script:
     - *export_variables
-    -  helm pull oci://$HARBOR/tulibraries/noid-generator-charts/noid-generator --version "0.1.*" --untar
-    - helm upgrade noid-generator oci://$HARBOR/tulibraries/noid-generator-charts/noid-generator --version "0.1.*" --history-max=5 --namespace=noid-generator --values noid-generator/values.yaml --set image.repository=$IMAGE:$VERSION
+    -  helm pull oci://$HARBOR/tulibraries/noid-generator-charts/noid-generator --untar
+    - helm upgrade noid-generator oci://$HARBOR/tulibraries/noid-generator-charts/noid-generator --history-max=5 --namespace=noid-generator --values noid-generator/values.yaml --set image.repository=$IMAGE:$VERSION
