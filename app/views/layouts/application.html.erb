@@ -6,8 +6,8 @@
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   </head>
 
   <body>
@@ -18,10 +18,11 @@
         </div>
         <div class="col col-2">
           <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" data-bs-target="#dropdown-menu" aria-haspopup="true" aria-expanded="false">
               Menu
             </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+
+            <div id="dropdown-menu" class="dropdown-menu" aria-labelledby="dropdownMenu2">
               <% if logged_in? %>
                 <% unless bulletin_user? %>
                 <%= link_to "Generators", generators_path, class: "dropdown-item btn btn-secondary" %>
