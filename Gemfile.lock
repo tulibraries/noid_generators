@@ -109,6 +109,12 @@ GEM
       bigdecimal
       rexml
     crass (1.0.6)
+    dartsass-sprockets (3.2.0)
+      railties (>= 4.0.0)
+      sassc-embedded (~> 1.80.1)
+      sprockets (> 3.0)
+      sprockets-rails
+      tilt
     date (3.4.1)
     diff-lcs (1.5.1)
     docile (1.4.1)
@@ -133,6 +139,21 @@ GEM
     formatador (1.1.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    google-protobuf (4.29.3)
+      bigdecimal
+      rake (>= 13)
+    google-protobuf (4.29.3-aarch64-linux)
+      bigdecimal
+      rake (>= 13)
+    google-protobuf (4.29.3-arm64-darwin)
+      bigdecimal
+      rake (>= 13)
+    google-protobuf (4.29.3-x86_64-darwin)
+      bigdecimal
+      rake (>= 13)
+    google-protobuf (4.29.3-x86_64-linux)
+      bigdecimal
+      rake (>= 13)
     guard (2.19.1)
       formatador (>= 0.2.4)
       listen (>= 2.7, < 4.0)
@@ -163,10 +184,11 @@ GEM
     json-schema (5.1.1)
       addressable (~> 2.8)
       bigdecimal (~> 3.1)
-    language_server-protocol (3.17.0.3)
-    launchy (3.0.1)
+    language_server-protocol (3.17.0.4)
+    launchy (3.1.0)
       addressable (~> 2.8)
       childprocess (~> 5.0)
+      logger (~> 1.6)
     listen (3.9.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -323,7 +345,7 @@ GEM
       rspec-mocks (~> 3.13)
       rspec-support (~> 3.13)
     rspec-support (3.13.2)
-    rubocop (1.70.0)
+    rubocop (1.71.0)
       json (~> 2.3)
       language_server-protocol (>= 3.17.0)
       parallel (~> 1.10)
@@ -333,9 +355,9 @@ GEM
       rubocop-ast (>= 1.36.2, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 2.4.0, < 4.0)
-    rubocop-ast (1.37.0)
+    rubocop-ast (1.38.0)
       parser (>= 3.3.1.0)
-    rubocop-rails (2.29.0)
+    rubocop-rails (2.29.1)
       activesupport (>= 4.2.0)
       rack (>= 1.1)
       rubocop (>= 1.52.0, < 2.0)
@@ -344,16 +366,24 @@ GEM
       rexml
     ruby-progressbar (1.13.0)
     rubyzip (2.4.1)
-    sass-rails (6.0.0)
-      sassc-rails (~> 2.1, >= 2.1.1)
-    sassc (2.4.0)
-      ffi (~> 1.9)
-    sassc-rails (2.1.2)
-      railties (>= 4.0.0)
-      sassc (>= 2.0)
-      sprockets (> 3.0)
-      sprockets-rails
-      tilt
+    sass-embedded (1.83.4-aarch64-linux-gnu)
+      google-protobuf (~> 4.29)
+    sass-embedded (1.83.4-aarch64-linux-musl)
+      google-protobuf (~> 4.29)
+    sass-embedded (1.83.4-arm-linux-gnueabihf)
+      google-protobuf (~> 4.29)
+    sass-embedded (1.83.4-arm-linux-musleabihf)
+      google-protobuf (~> 4.29)
+    sass-embedded (1.83.4-arm64-darwin)
+      google-protobuf (~> 4.29)
+    sass-embedded (1.83.4-x86_64-darwin)
+      google-protobuf (~> 4.29)
+    sass-embedded (1.83.4-x86_64-linux-gnu)
+      google-protobuf (~> 4.29)
+    sass-embedded (1.83.4-x86_64-linux-musl)
+      google-protobuf (~> 4.29)
+    sassc-embedded (1.80.2)
+      sass-embedded (~> 1.80)
     selenium-webdriver (4.10.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
@@ -373,7 +403,7 @@ GEM
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.13.1)
     simplecov_json_formatter (0.1.4)
-    sorbet-runtime (0.5.11766)
+    sorbet-runtime (0.5.11787)
     spring (3.0.0)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
@@ -442,6 +472,7 @@ DEPENDENCIES
   capybara (~> 3)
   coffee-rails (~> 5.0)
   concurrent-ruby (= 1.3.4)
+  dartsass-sprockets
   execjs
   factory_bot_rails
   faker
@@ -469,7 +500,6 @@ DEPENDENCIES
   rspec-rails
   rubocop
   rubocop-rails
-  sass-rails (~> 6.0)
   selenium-webdriver
   sequel
   simple_auth
