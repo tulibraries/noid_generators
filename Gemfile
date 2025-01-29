@@ -3,11 +3,10 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-gem "rails", "7.0.8.7"
+gem "rails", "7.2.2.1"
 gem "bcrypt", "~> 3.1.7"
 gem "bootsnap", ">= 1.14.0", require: false
 gem "bootstrap"
-gem "coffee-rails", "~> 5.0"
 gem "concurrent-ruby", "1.3.4"
 gem "cssbundling-rails"
 gem "execjs"
@@ -20,7 +19,7 @@ gem "net-imap"
 gem "net-pop"
 gem "net-smtp"
 gem "pg"
-gem "puma", "~> 5.6"
+gem "puma"
 gem "simple_auth"
 gem "simple_form"
 gem "sprockets-rails"
