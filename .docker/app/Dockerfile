@@ -21,6 +21,8 @@ RUN apk add -U --no-cache \
       postgresql16-dev=16.6-r0 \
       libxslt-dev=1.1.42-r1 \
       nodejs=22.11.0-r1 \
+      yaml=0.2.5-r2 \
+      yaml-dev=0.2.5-r2 \
       yarn=1.22.22-r1 && \
     gem install bundler:2.3.3 && \
     bundle config build.nokogiri --use-system-libraries && \
