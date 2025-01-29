@@ -7,7 +7,6 @@ gem "rails", "7.2.2.1"
 gem "bcrypt", "~> 3.1.7"
 gem "bootsnap", ">= 1.14.0", require: false
 gem "bootstrap"
-gem "coffee-rails", "~> 5.0"
 gem "concurrent-ruby", "1.3.4"
 gem "cssbundling-rails"
 gem "execjs"
