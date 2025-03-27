@@ -476,6 +476,7 @@ DEPENDENCIES
   net-imap
   net-pop
   net-smtp
+  nokogiri (~> 1.18.6)
   okcomputer
   pg
   populate
