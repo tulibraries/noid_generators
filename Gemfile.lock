@@ -100,12 +100,11 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
-    cgi (0.4.2)
     childprocess (5.1.0)
       logger (~> 1.5)
     choice (0.2.0)
     coderay (1.1.3)
-    concurrent-ruby (1.3.4)
+    concurrent-ruby (1.3.5)
     connection_pool (2.5.0)
     crack (1.0.0)
       bigdecimal
@@ -461,8 +460,7 @@ DEPENDENCIES
   brakeman
   byebug
   capybara (~> 3)
-  cgi (~> 0.4.2)
-  concurrent-ruby (= 1.3.4)
+  concurrent-ruby
   cssbundling-rails
   execjs
   factory_bot_rails
