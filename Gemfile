@@ -26,7 +26,7 @@ gem "sprockets-rails"
 gem "turbolinks", "~> 5"
 gem "uglifier", ">= 1.3.0"
 gem "warden"
-gem "nokogiri", "~> 1.18.6"
+gem "nokogiri", "~> 1.18.8"
 gem "cgi", "~> 0.4.2"
 
 group :development, :test do
