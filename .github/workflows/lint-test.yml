@@ -52,6 +52,13 @@ jobs:
         with:
           ruby-version: ${{ matrix.ruby-version }}
           bundler-cache: true
+
+      - name: Setup Postgres
+        uses: ikalnytskyi/action-setup-postgres@v7
+        id: postgres
+
+      - name: Setup database
+        run: bundle exec rails db:schema:load
           
       - name: Run tests
         run: |
