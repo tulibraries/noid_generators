@@ -55,7 +55,10 @@ jobs:
 
       - name: Setup Postgres
         uses: ikalnytskyi/action-setup-postgres@v7
-        id: postgres
+        with:
+          username: noid
+          password: password
+          database: noids_test
 
       - name: Setup database
         run: bundle exec rails db:schema:load
