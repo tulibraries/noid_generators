@@ -48,4 +48,3 @@ RSpec.describe "Generator project counters", type: :request do
     expect(generator.noid.to_i).to eq(2)
   end
 end
-
