@@ -50,6 +50,11 @@ jobs:
           ruby-version: ${{ matrix.ruby-version }}
           bundler-cache: true
 
+      - name: Install frontend dependencies
+        run: |
+          yarn install
+          yarn run build:css
+
       - name: Setup Postgres
         uses: ikalnytskyi/action-setup-postgres@v7
         with:
