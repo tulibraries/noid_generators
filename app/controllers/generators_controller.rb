@@ -66,10 +66,10 @@ class GeneratorsController < ApplicationController
         project_record.with_lock do
           project_record.reload
           next_noid = if project_record.last_date == current_month
-                        project_record.noid.to_i + 1
+            project_record.noid.to_i + 1
                       else
                         1
-                      end
+          end
           project_record.update!(noid: next_noid, last_date: current_month)
           generated_noid = next_noid.to_s.rjust(6, "0")
         end
@@ -79,10 +79,10 @@ class GeneratorsController < ApplicationController
         params[:generator]["last_date"] = current_month
       else
         next_noid = if @generator.last_date == current_month
-                      @generator.noid.to_i + 1
+          @generator.noid.to_i + 1
                     else
                       1
-                    end
+        end
         generated_noid = next_noid.to_s.rjust(6, "0")
         params[:generator]["last_date"] = current_month
       end

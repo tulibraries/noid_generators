@@ -6,4 +6,3 @@ class AddCounterFieldsToProjects < ActiveRecord::Migration[7.0]
     add_column :projects, :last_date, :string, limit: 2
   end
 end
-

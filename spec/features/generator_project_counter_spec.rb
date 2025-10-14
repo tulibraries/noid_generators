@@ -39,7 +39,7 @@ RSpec.describe "Generator project counters", type: :feature do
     within("form") do
       find("option", text: "Collection B (DNCP)").select_option
     end
-    
+
     click_button "Generate NOID"
 
     expect(page).to have_content("NOID: DNCPZ#{timestamp}000001")
