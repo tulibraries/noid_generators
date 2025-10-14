@@ -19,23 +19,18 @@ RSpec.describe "Generator project counters", type: :feature do
 
   it "resets the counter per project" do
     visit generator_path(generator)
-
     expect(page).to have_current_path(generator_path(generator))
 
-    within("form") do
-      expect(page).to have_selector("option", text: "Collection A (AMANU)")
-      expect(page).to have_selector("option", text: "Collection B (DNCP)")
-      find("option", text: "Collection A (AMANU)").select_option
-    end
+    expect(page).to have_selector("option", text: "Collection A (AMANU)")
+    expect(page).to have_selector("option", text: "Collection B (DNCP)")
+    select "Collection A (AMANU)", from: "Project"
 
     click_button "Generate NOID"
 
     timestamp = Time.zone.now.strftime("%Y%m")
     expect(page).to have_content("NOID: AMANUZ#{timestamp}000001")
 
-    within("form") do
-      find("option", text: "Collection B (DNCP)").select_option
-    end
+    select "Collection B (DNCP)", from: "Project"
 
     click_button "Generate NOID"
 
