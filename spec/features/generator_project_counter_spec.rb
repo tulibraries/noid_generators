@@ -21,8 +21,6 @@ RSpec.describe "Generator project counters", type: :feature do
     visit generator_path(generator)
     expect(page).to have_current_path(generator_path(generator))
 
-    puts page.html if ENV["CI"]
-
     project_select = find(:select, "generator_project_id", visible: :all)
     project_select.find(:option, "Collection A (AMANU)").select_option
 

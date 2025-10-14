@@ -19,6 +19,7 @@ module NoidGenerators
     # in config/environments, which are processed later.
     #
     config.time_zone = "Eastern Time (US & Canada)"
+    config.assets.paths << Rails.root.join("node_modules")
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end
