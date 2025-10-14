@@ -387,6 +387,8 @@ GEM
       rexml
     ruby-progressbar (1.13.0)
     rubyzip (2.4.1)
+    sassc (2.4.0)
+      ffi (~> 1.9)
     securerandom (0.4.1)
     selenium-webdriver (4.10.0)
       rexml (~> 3.2, >= 3.2.5)
@@ -513,6 +515,7 @@ DEPENDENCIES
   rspec-rails
   rubocop
   rubocop-rails
+  sassc (~> 2.4)
   selenium-webdriver
   sequel
   simple_auth
