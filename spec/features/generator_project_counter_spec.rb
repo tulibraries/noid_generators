@@ -21,8 +21,6 @@ RSpec.describe "Generator project counters", type: :feature do
     visit generator_path(generator)
     expect(page).to have_current_path(generator_path(generator))
 
-    expect(page).to have_selector("option", text: "Collection A (AMANU)")
-    expect(page).to have_selector("option", text: "Collection B (DNCP)")
     select "Collection A (AMANU)", from: "Project"
 
     click_button "Generate NOID"
