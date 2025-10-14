@@ -21,14 +21,18 @@ RSpec.describe "Generator project counters", type: :feature do
     visit generator_path(generator)
     expect(page).to have_current_path(generator_path(generator))
 
-    select "Collection A (AMANU)", from: "generator_project_id"
+    puts page.html if ENV["CI"]
+
+    project_select = find(:select, "generator_project_id", visible: :all)
+    project_select.find(:option, "Collection A (AMANU)").select_option
 
     click_button "Generate NOID"
 
     timestamp = Time.zone.now.strftime("%Y%m")
     expect(page).to have_content("NOID: AMANUZ#{timestamp}000001")
 
-    select "Collection B (DNCP)", from: "generator_project_id"
+    project_select = find(:select, "generator_project_id", visible: :all)
+    project_select.find(:option, "Collection B (DNCP)").select_option
 
     click_button "Generate NOID"
 
