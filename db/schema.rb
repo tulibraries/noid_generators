@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_01_20_213306) do
+ActiveRecord::Schema[7.2].define(version: 2025_01_31_120000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -38,6 +38,8 @@ ActiveRecord::Schema[7.0].define(version: 2025_01_20_213306) do
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.bigint "generator_id"
+    t.integer "noid", default: 0, null: false
+    t.string "last_date", limit: 2
     t.index ["generator_id"], name: "index_projects_on_generator_id"
   end
 
@@ -47,5 +49,4 @@ ActiveRecord::Schema[7.0].define(version: 2025_01_20_213306) do
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
   end
-
 end

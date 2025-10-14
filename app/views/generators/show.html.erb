@@ -20,8 +20,16 @@
     <%= f.hidden_field :lock_version %>
 
     <% unless (["Bulletin", "Mosley Photographs"].include? @generator.name) %>
-      <% project_set = @generator.projects.map { |p| [p.name, p.code+p.label] }.to_a %>
-      <%= f.input :project, as: :select, collection: project_set, selected: project_set.detect{ |p| p[1] == @selected_project }, required: true, hint: "'Z', 'X', or 'JZ' delimiters will be automatically appended" %>
+      <% project_set = @generator.projects.map { |p| ["#{p.name} (#{p.code}#{p.label})", p.id] } %>
+      <%= f.input :project_id,
+                  as: :select,
+                  collection: project_set,
+                  include_blank: "Select a project",
+                  required: true,
+                  label: "Project",
+                  input_html: { id: "generator_project_id" },
+                  wrapper_html: { data: { testid: "project-select" } },
+                  hint: "'Z', 'X', or 'JZ' delimiters will be automatically appended" %>
     <% end %>
 
     <% if @generator.name == "Templana (Complex)" %>
