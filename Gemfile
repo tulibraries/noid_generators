@@ -7,6 +7,7 @@ gem "rails", "~> 7.2"
 gem "bcrypt", "~> 3.1.7"
 gem "bootsnap", ">= 1.14.0", require: false
 gem "bootstrap"
+gem "cgi", "~> 0.4.2"
 gem "concurrent-ruby"
 gem "cssbundling-rails"
 gem "execjs"
@@ -27,7 +28,7 @@ gem "turbolinks", "~> 5"
 gem "uglifier", ">= 1.3.0"
 gem "warden"
 gem "nokogiri", "~> 1.18.9"
-gem "cgi", "~> 0.4.2"
+gem "uri", ">= 1.0.4"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
