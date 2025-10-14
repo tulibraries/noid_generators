@@ -13,11 +13,8 @@ RSpec.describe "Generator project counters", type: :feature do
   end
 
   before do
-    page.set_rack_session(user_id: user.id)
-  end
-
-  after do
-    page.set_rack_session(user_id: nil)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    allow_any_instance_of(ApplicationController).to receive(:authorized).and_return(true)
   end
 
   it "resets the counter per project" do
