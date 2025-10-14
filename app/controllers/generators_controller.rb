@@ -9,8 +9,13 @@ class GeneratorsController < ApplicationController
 
   def show
     if alert.present?
-      @selected_project = alert
+      @generator.project_id = alert
+    elsif @generator.project.present?
+      selected = @generator.projects.find { |p| "#{p.code}#{p.label}" == @generator.project }
+      @generator.project_id = selected&.id
     end
+
+    @generator.project_id ||= @generator.projects.first&.id
   end
 
   def not_logged_in
@@ -44,20 +49,50 @@ class GeneratorsController < ApplicationController
 
   def update
     @generator.with_lock do
-      g = Generator.uncached { Generator.find(@generator.id) }
-      version = @generator.lock_version
-      last_date = Time.now.strftime("%m")
-      if g.last_date == last_date
-        new_noid = g.noid.to_i + 1
+      @generator.reload
+      current_month = Time.zone.now.strftime("%m")
+      generated_noid = nil
+      selected_project_id = params[:generator]["project_id"].presence
+      project_record = nil
+
+      if project_scoped_generator?(@generator)
+        project_record = @generator.projects.find_by(id: selected_project_id)
+        unless project_record
+          flash[:notice] = "Select a project before generating a NOID."
+          @generator.project_id = selected_project_id
+          render :show and return
+        end
+
+        project_record.with_lock do
+          project_record.reload
+          next_noid = if project_record.last_date == current_month
+                        project_record.noid.to_i + 1
+                      else
+                        1
+                      end
+          project_record.update!(noid: next_noid, last_date: current_month)
+          generated_noid = next_noid.to_s.rjust(6, "0")
+        end
+
+        params[:generator]["project"] = "#{project_record.code}#{project_record.label}"
+        params[:generator]["project_id"] = project_record.id
+        params[:generator]["last_date"] = current_month
       else
-        new_noid = 1
+        next_noid = if @generator.last_date == current_month
+                      @generator.noid.to_i + 1
+                    else
+                      1
+                    end
+        generated_noid = next_noid.to_s.rjust(6, "0")
+        params[:generator]["last_date"] = current_month
       end
-      params[:generator]["noid"] = new_noid.to_s.rjust(6, "0")
-      params[:generator]["last_date"] = last_date
+
+      params[:generator]["noid"] = generated_noid
 
       respond_to do |format|
         if @generator.update(generator_params)
-          project = params[:generator]["project"]
+          @generator.project_id = params[:generator]["project_id"]
+          project_identifier = params[:generator]["project"]
           class_code = params[:generator]["class_code"]
           prefix = params[:generator]["prefix"]
           suffix = params[:generator]["suffix"]
@@ -66,14 +101,14 @@ class GeneratorsController < ApplicationController
           noid = params[:generator]["noid"]
           year = Time.zone.now.strftime("%Y")
           month = Time.zone.now.strftime("%m")
-          if project.present? || (["Bulletin", "Mosley Photographs"].include? @generator.name)
+          if project_identifier.present? || (["Bulletin", "Mosley Photographs"].include? @generator.name)
             case @generator.name
             when "General"
-              message = "NOID: " + "#{project}Z#{year}#{month}#{noid}"
+              message = "NOID: " + "#{project_identifier}Z#{year}#{month}#{noid}"
             when "Oral Histories"
-              message = "NOID: " + "#{project}JZ#{year}#{month}#{noid}"
+              message = "NOID: " + "#{project_identifier}JZ#{year}#{month}#{noid}"
             when "Templana (Complex)"
-              message = "NOID: " + "#{project}X#{class_code}Z#{year}#{month}#{noid}"
+              message = "NOID: " + "#{project_identifier}X#{class_code}Z#{year}#{month}#{noid}"
             when "Bulletin"
               message = "NOID: " + "#{prefix}Z#{year}#{month}#{noid}#{suffix}"
             when "Mosley Photographs"
@@ -81,8 +116,6 @@ class GeneratorsController < ApplicationController
             else
               return
             end
-
-            @selected_project = params[:generator]["project"]
           else
             message = "Generator successfully updated."
           end
@@ -90,17 +123,18 @@ class GeneratorsController < ApplicationController
           flash[:notice] = message
           flash.keep(:notice)
 
-          format.html { redirect_to @generator, alert: @selected_project }
+          alert_value = project_record&.id
+          format.html { redirect_to @generator, alert: alert_value }
           format.json { render :show, status: :ok, location: @generator }
         else
           format.html { render :show, notice: "Stale value. Pease try again." }
           format.json { render json: @generator.errors, status: :unprocessable_entity }
         end
       end
-      rescue ActiveRecord::StaleObjectError
-        flash[:notice] = "Noid value needs refresh. Please try again."
-        @generator.reload
-        render :show, notice: "Stale value. Pease try again."
+    rescue ActiveRecord::StaleObjectError
+      flash[:notice] = "Noid value needs refresh. Please try again."
+      @generator.reload
+      render :show, notice: "Stale value. Pease try again."
     end
   end
 
@@ -118,6 +152,10 @@ class GeneratorsController < ApplicationController
     end
 
     def generator_params
-      params.require(:generator).permit(:name, :noid, :last_date, :project, :projects, :class_code, :prefix, :suffix, :picture_code, :date_taken, :lock_version)
+      params.require(:generator).permit(:name, :noid, :last_date, :project, :projects, :class_code, :prefix, :suffix, :picture_code, :date_taken, :lock_version, :project_id)
+    end
+
+    def project_scoped_generator?(generator)
+      ["General", "Oral Histories", "Templana (Complex)"].include?(generator.name)
     end
 end

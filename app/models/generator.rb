@@ -3,4 +3,6 @@
 class Generator < ApplicationRecord
   has_many :projects, dependent: :destroy
   validates :name, presence: true
+
+  attr_accessor :project_id
 end
