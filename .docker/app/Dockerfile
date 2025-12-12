@@ -11,20 +11,20 @@ ARG RAILS_MASTER_KEY
 ENV TMPDIR=/secure-tmp
 
 RUN apk add -U --no-cache \
-      bash=5.2.37-r0 \
+      bash=5.3.3-r1 \
       gcompat=1.1.0-r4 \
       tzdata=2025b-r0 \
       postgresql16-client=16.11-r0 \
-      libstdc++=14.2.0-r6 \
+      libstdc++=15.2.0-r2 \
       libxslt=1.1.43-r3 && \
     apk add -U --no-cache --virtual build-dependencies \
       build-base=0.5-r3 \
-      libffi-dev=3.4.8-r0 \
+      libffi-dev=3.5.2-r0 \
       libsass-dev=3.6.6-r0 \
-      git=2.49.1-r0 \
+      git=2.52.0-r0 \
       postgresql16-dev=16.11-r0 \
       libxslt-dev=1.1.43-r3 \
-      nodejs=22.16.0-r2 \
+      nodejs=24.11.1-r0 \
       yaml=0.2.5-r2 \
       yaml-dev=0.2.5-r2 \
       yarn=1.22.22-r1 && \
