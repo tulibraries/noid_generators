@@ -24,7 +24,7 @@ RUN apk add -U --no-cache \
       git=2.52.0-r0 \
       postgresql17-dev=17.7-r0 \
       libxslt-dev=1.1.43-r3 \
-      nodejs=24.11.1-r0 \
+      nodejs=24.13.0-r1 \
       yaml=0.2.5-r2 \
       yaml-dev=0.2.5-r2 \
       yarn=1.22.22-r1 && \
