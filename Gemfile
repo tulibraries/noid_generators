@@ -4,7 +4,7 @@ source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gem "rails", "~> 7.2"
-gem "bcrypt", "~> 3.1.7"
+gem "bcrypt", "~> 3.1.22"
 gem "bootsnap", ">= 1.14.0", require: false
 gem "bootstrap"
 gem "cgi", "~> 0.4.2"
