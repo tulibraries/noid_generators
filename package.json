@@ -2,23 +2,22 @@
   "name": "noid_generators",
   "private": true,
   "dependencies": {
-    "@hotwired/stimulus": "^3.0.1",
+    "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo-rails": "^8.0.23",
     "@popperjs/core": "^2.11.8",
-    "@rollup/plugin-commonjs": "^28.0.2",
-    "@rollup/plugin-replace": "^6.0.2",
-    "bootstrap": "^5.3.3",
-    "bootstrap-icons": "^1.11.3",
+    "@rollup/plugin-commonjs": "^29.0.2",
+    "@rollup/plugin-replace": "^6.0.3",
+    "bootstrap": "^5.3.8",
+    "bootstrap-icons": "^1.13.1",
     "jquery": "^3.7.1",
     "microplugin": "^0.0.3",
-    "rollup": "^4.59.0",
-    "sass": "^1.52.1",
+    "rollup": "^4.60.1",
+    "sass": "^1.97.3",
     "sifter": "^0.5.4"
   },
   "version": "0.1.0",
   "resolutions": {
-    "minimist": "1.2.6",
-    "glob-parent": "6.0.1"
+    "minimist": "1.2.6"
   },
   "scripts": {
     "build:css": "sass ./app/assets/stylesheets/application.scss ./app/assets/builds/application.css --no-source-map --load-path=node_modules",
