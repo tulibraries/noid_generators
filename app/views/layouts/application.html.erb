@@ -17,12 +17,12 @@
           <h1>Special Collections Research Center</h1>
         </div>
         <div class="col col-2">
-          <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" data-bs-target="#dropdown-menu" aria-haspopup="true" aria-expanded="false">
+          <details class="dropdown menu">
+            <summary class="btn btn-secondary dropdown-toggle" id="dropdownMenu2" aria-haspopup="menu">
               Menu
-            </button>
+            </summary>
 
-            <div id="dropdown-menu" class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <div id="dropdown-menu" class="dropdown-menu show" aria-labelledby="dropdownMenu2">
               <% if logged_in? %>
                 <% unless bulletin_user? %>
                 <%= link_to "Generators", generators_path, class: "dropdown-item btn btn-secondary" %>
@@ -42,7 +42,7 @@
                 <%end%>
               <% end %>
             </div>
-          </div>
+          </details>
         </div>
       </div>
       <% if notice.present? %>

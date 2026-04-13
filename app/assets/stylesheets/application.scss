@@ -1,5 +1,4 @@
- @import "bootstrap/scss/bootstrap";
- @import "bootstrap-icons/font/bootstrap-icons";
+@import "bootstrap/scss/bootstrap";
 
 body {
 	padding-top: 21px;
@@ -15,4 +14,20 @@ body {
 #header {
 	border-bottom: solid #ccc 1px;
 	padding-bottom: 14px;
+}
+
+.menu {
+	position: relative;
+}
+
+.menu summary {
+	list-style: none;
+}
+
+.menu summary::-webkit-details-marker {
+	display: none;
+}
+
+.menu[open] .dropdown-menu {
+	display: block;
 }
