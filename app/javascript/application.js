@@ -1,5 +1,1 @@
 import "@hotwired/turbo-rails"
-import "sifter"
-import "microplugin"
-import * as bootstrap from "bootstrap"
-import "./src/jquery"
