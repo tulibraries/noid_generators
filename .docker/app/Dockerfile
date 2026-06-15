@@ -19,7 +19,7 @@ RUN apk add -U --no-cache \
       libxslt=1.1.43-r3 && \
     apk add -U --no-cache --virtual build-dependencies \
       build-base=0.5-r4 \
-      libffi-dev=3.5.2-r0 \
+      libffi-dev=3.5.2-r1 \
       libsass-dev=3.6.6-r0 \
       git=2.54.0-r0 \
       postgresql17-dev=17.10-r0 \
