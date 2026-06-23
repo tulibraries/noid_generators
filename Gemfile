@@ -25,7 +25,7 @@ gem "simple_auth"
 gem "simple_form"
 gem "turbo-rails"
 gem "warden"
-gem "nokogiri", "~> 1.19.3"
+gem "nokogiri", "~> 1.19.4"
 gem "uri", ">= 1.0.4"
 
 group :development, :test do
