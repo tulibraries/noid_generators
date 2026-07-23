@@ -3,6 +3,7 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^5.3.8",
+    "immutable": "^5.1.9",
     "sass": "^1.97.3"
   },
   "version": "0.1.0",
