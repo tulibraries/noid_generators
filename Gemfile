@@ -14,6 +14,8 @@ gem "csv"
 gem "execjs"
 gem "importmap-rails"
 gem "jbuilder", "~> 2.11"
+# Rails 8.1 passes positional options to JSON.parse, which JSON 3 no longer accepts.
+gem "json", "~> 2.0"
 gem "okcomputer"
 gem "net-http"
 gem "net-imap"

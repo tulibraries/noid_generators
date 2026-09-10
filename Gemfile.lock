@@ -171,7 +171,7 @@ GEM
     jbuilder (2.15.1)
       actionview (>= 7.0.0)
       activesupport (>= 7.0.0)
-    json (3.0.2)
+    json (2.21.2)
     json-schema (6.2.0)
       addressable (~> 2.8)
       bigdecimal (>= 3.1, < 5)
@@ -480,6 +480,7 @@ DEPENDENCIES
   guard-rspec
   importmap-rails
   jbuilder (~> 2.11)
+  json (~> 2.0)
   json-schema
   launchy
   mutant-rspec
@@ -517,4 +518,4 @@ DEPENDENCIES
   webmock
 
 BUNDLED WITH
-   2.7.1
+   2.7.2
