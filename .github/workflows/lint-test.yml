@@ -22,7 +22,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        ruby-version: ['3.4']
+        ruby-version: ["4.0"]
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -42,7 +42,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        ruby-version: ['3.4']
+        ruby-version: ["4.0"]
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
