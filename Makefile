@@ -6,7 +6,6 @@ IMAGE ?= tulibraries/noid-generator
 VERSION ?= $(DOCKER_IMAGE_VERSION)
 HARBOR ?= harbor.k8s.temple.edu
 CLEAR_CACHES=no
-RAILS_MASTER_KEY ?= $(NOIDS_MASTER_KEY)
 NOIDS_DB_HOST ?= host.docker.internal
 NOIDS_DB_NAME ?= noid-generators
 NOIDS_DB_USER ?= noid
@@ -29,8 +28,7 @@ run:
 		$(HARBOR)/$(IMAGE):$(VERSION)
 
 build:
-	@docker build --build-arg SECRET_KEY_BASE=$(SECRET_KEY_BASE) \
-	  --build-arg RAILS_MASTER_KEY=$(RAILS_MASTER_KEY) \
+	@docker build \
 		--tag $(HARBOR)/$(IMAGE):$(VERSION) \
 		--tag $(HARBOR)/$(IMAGE):latest \
 		--file .docker/app/Dockerfile \

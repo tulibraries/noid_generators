@@ -6,8 +6,6 @@ COPY . .
 
 USER 0
 
-ARG SECRET_KEY_BASE
-ARG RAILS_MASTER_KEY
 ENV TMPDIR=/secure-tmp
 
 RUN apk add -U --no-cache \
@@ -34,7 +32,7 @@ RUN apk add -U --no-cache \
     bundle install --jobs=8 && \
     find "$GEM_HOME" -name yarn.lock -exec rm "{}" \; && \
     find "$GEM_HOME" -name Gemfile.lock -exec rm "{}" \; && \
-    RAILS_ENV=production SECRET_KEY_BASE=$SECRET_KEY_BASE bundle exec rails assets:precompile && \
+    RAILS_ENV=production SECRET_KEY_BASE_DUMMY=1 bundle exec rails assets:precompile && \
     rm -rf node_modules && \
     rm -rf tmp/* && \
     apk del build-dependencies && \
