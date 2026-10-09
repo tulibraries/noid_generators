@@ -3,7 +3,7 @@ NOID Generators is a Ruby on Rails application used by Temple University Librari
 
 The application supports General, Oral Histories, Templana (Complex), Bulletin, and Mosley Photographs generators. Each follows collection-specific formatting rules, combining project codes, dates, sequential numbers, and additional fields where required.
 
-Users log in to generate identifiers, while administrators can also manage projects and their associated generators.
+Users log in to generate identifiers, while administrators can also manage projects.
 
 # login
 
