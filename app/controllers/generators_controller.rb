@@ -63,6 +63,14 @@ class GeneratorsController < ApplicationController
           render :show and return
         end
 
+        if class_code_required?(@generator, project_record) && params[:generator]["class_code"].blank?
+          flash.now[:notice] = "Classification Code is required for this project."
+          @generator.project_id = project_record.id
+          @generator.class_code = params[:generator]["class_code"]
+          @generator.errors.add(:class_code, "can't be blank")
+          render :show, status: :unprocessable_entity and return
+        end
+
         project_record.with_lock do
           project_record.reload
           next_noid = if project_record.last_date == current_month
@@ -157,5 +165,9 @@ class GeneratorsController < ApplicationController
 
     def project_scoped_generator?(generator)
       ["General", "Oral Histories", "Templana (Complex)"].include?(generator.name)
+    end
+
+    def class_code_required?(generator, project)
+      generator.name == "Templana (Complex)" && project.label != "TTUNN"
     end
 end
