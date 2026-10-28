@@ -33,7 +33,8 @@
     <% end %>
 
     <% if @generator.name == "Templana (Complex)" %>
-      <%= f.input :class_code, label: "Classification Code", required: true %>
+      <%= f.input :class_code, label: "Classification Code", required: false,
+                  hint: "Required for all projects except TTUNN." %>
     <% end %>
     
     <% if @generator.name == "Bulletin" %>
