@@ -60,9 +60,7 @@ group :test do
   gem "rails-controller-testing"
   gem "rspec-activemodel-mocks"
   gem "rspec-rails"
-  gem "selenium-webdriver"
   gem "simplecov", require: false
-  gem "webdrivers"
   gem "webmock"
 end
 
