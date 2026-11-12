@@ -14,7 +14,7 @@ RUN apk add -U --no-cache \
       tzdata=2026f-r0 \
       postgresql17-client=17.11-r0 \
       libstdc++=15.2.0-r5 \
-      libxslt=1.1.43-r3 && \
+      libxslt=1.1.43-r4 && \
     apk add -U --no-cache --virtual build-dependencies \
       build-base=0.5-r4 \
       libffi-dev=3.5.2-r1 \
