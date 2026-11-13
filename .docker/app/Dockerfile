@@ -12,7 +12,7 @@ RUN apk add -U --no-cache \
       bash=5.3.9-r1 \
       gcompat=1.1.0-r4 \
       tzdata=2026f-r0 \
-      postgresql17-client=17.11-r0 \
+      postgresql17-client=17.12-r0 \
       libstdc++=15.2.0-r5 \
       libxslt=1.1.43-r4 && \
     apk add -U --no-cache --virtual build-dependencies \
@@ -20,7 +20,7 @@ RUN apk add -U --no-cache \
       libffi-dev=3.5.2-r1 \
       libsass-dev=3.6.6-r0 \
       git=2.54.1-r0 \
-      postgresql17-dev=17.11-r0 \
+      postgresql17-dev=17.12-r0 \
       libxslt-dev=1.1.43-r4 \
       nodejs=24.22.3-r0 \
       yaml=0.2.5-r2 \
