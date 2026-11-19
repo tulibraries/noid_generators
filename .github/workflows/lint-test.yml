@@ -54,7 +54,7 @@ jobs:
           bundler-cache: true
 
       - name: Setup Postgres
-        uses: ikalnytskyi/action-setup-postgres@v7
+        uses: ikalnytskyi/action-setup-postgres@v9
         with:
           username: noid
           password: password
